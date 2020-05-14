@@ -1,4 +1,4 @@
-﻿// Pólya conjecture
+// find countercase of Pólya conjecture
 
 #include <iostream>
 
