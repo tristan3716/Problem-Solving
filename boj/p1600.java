@@ -1,40 +1,33 @@
-/**
- * @title 말이 되고픈 원숭이 G5
- * @see https://www.acmicpc.net/problem/1600
- * @since 2020.02.09
- * @category bfs
- * @complexity O(12 * n^2) -> 1196ms (n = 200)
- * @description
- *      심플하게 12가지 이동방향을 가지는 bfs
- */
+package src;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Move {
-    int y;
-    int x;
-    int k; // LeftHorseMove
-    int b;
 
-    public Move(int r, int c, int k, int b) {
-        this.y = r;
-        this.x = c;
-        this.k = k;
-        this.b = b;
+public class p1600 {
+    private static class Move {
+        int y;
+        int x;
+        int k; // LeftHorseMove
+        int b;
+
+        public Move(int r, int c, int k, int b) {
+            this.y = r;
+            this.x = c;
+            this.k = k;
+            this.b = b;
+        }
     }
-}
 
-public class Main {
     Scanner sc = new Scanner(System.in);
     int[][] arr;
     boolean[][][] visit;
     int k;
     int w, h;
     public static void main(String[] args) {
-        Main main = new Main();
-        main.solution();
+        p1600 p = new p1600();
+        p.solution();
     }
     int[][] MonkeyMove = {{-1,0}, {1,0}, {0,1}, {0,-1}};
     int[][] HorseMove = {{-2,-1},        {-2, 1},
@@ -52,7 +45,7 @@ public class Main {
         w = sc.nextInt();
         h = sc.nextInt();
         arr = new int[h][w];
-        visit = new boolean[h][w][k+4];
+        visit = new boolean[h][w][k+1];
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 arr[i][j] = sc.nextInt();

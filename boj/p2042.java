@@ -1,22 +1,14 @@
-/**
- * @title 구간 합 구하기 P5
- * @see https://www.acmicpc.net/problem/2042
- * @since 2020.02.12
- * @category segment-tree, fenwick-tree
- * @description
- *      세그먼트 트리 연습 문제, 펜윅트리로 풀었음.
- *      구현 정말 간단한데, 어떻게 활용할 수 있는지는 더 공부해야할 필요성
- */
+package src;
 
 import java.util.Scanner;
 
-public class Main {
+public class p2042 {
     int n;
-    static long [] tree;
-    static long [] source;
+    static long[] tree;
+    static long[] source;
 
     void update(int i, long diff) {
-        while (i <= n){
+        while (i <= n) {
             tree[i] += diff;
             i += (i & -i);
         }
@@ -46,7 +38,7 @@ public class Main {
             update(i, source[i]);
         }
 
-        for (int i = 0; i < (m+k); ++i) {
+        for (int i = 0; i < (m + k); ++i) {
             int type = sc.nextInt();
             if (type == 1) {
                 int b = sc.nextInt();
@@ -57,13 +49,13 @@ public class Main {
             } else {
                 int b = sc.nextInt();
                 int c = sc.nextInt();
-                System.out.println((sum(c) - sum(b-1)));
+                System.out.println((sum(c) - sum(b - 1)));
             }
         }
     }
 
     public static void main(String[] args) {
-        Main ts = new Main();
+        p2042 ts = new p2042();
         ts.solution();
     }
 }

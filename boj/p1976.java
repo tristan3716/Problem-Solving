@@ -1,19 +1,8 @@
-/**
- * @title 여행 가자 G4
- * @see https://www.acmicpc.net/problem/1976
- * @since 2020.02.16
- * @category graph, disjoint-set
- * @complexity O(n^2) -> 416ms (n = 200, m = 1000)
- * @description
- *      union-find 연습 문제
- *      불필요한 size가 제거되지 않았아서 발생한 오버헤드,
- *      union-find의 연산은 O(a(n)) 이고
- *      입력이 무향그래프 인접행렬로 주어지므로 (n^2)/2까지 줄일 여지가 있음
- */
+package src;
 
 import java.util.Scanner;
 
-public class Main {
+public class p1976 {
     private static class DisjointSet {
         int n;
 
@@ -89,4 +78,5 @@ public class Main {
         }
         System.out.println("YES");
     }
+
 }

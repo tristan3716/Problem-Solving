@@ -19,6 +19,7 @@ public class p16236 {
             this.c = c;
             this.isDead = false;
         }
+
         public Pos(int r, int c, int dist) {
             this.r = r;
             this.c = c;
@@ -44,12 +45,14 @@ public class p16236 {
     static Queue<Pos> q = new LinkedList<>();
     static PriorityQueue<Pos> pq = new PriorityQueue<>();
     static LinkedList<Pos> l = new LinkedList<>();
+    static int[][] directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
-    static int [][] directions = {{-1,0},{1,0},{0,1},{0,-1}};
     static boolean isIn(int r, int c) {
         return (r >= 0 && c >= 0 && r < n && c < m);
     }
-    static boolean [][] visit;
+
+    static boolean[][] visit;
+
     public static boolean inspect() {
         Pos shark = q.peek();
         visit[shark.r][shark.c] = true;
@@ -57,7 +60,7 @@ public class p16236 {
         while (!q.isEmpty()) {
             Pos cur = q.poll();
 
-            for (int [] direction : directions) {
+            for (int[] direction : directions) {
                 int nr = cur.r + direction[0];
                 int nc = cur.c + direction[1];
 
@@ -83,6 +86,7 @@ public class p16236 {
 
         return !pq.isEmpty();
     }
+
     public static int eat() {
         Pos fish = pq.poll();
         Pos shark = q.peek();
@@ -96,14 +100,11 @@ public class p16236 {
             eatCount = 0;
         }
 
-        for (Pos x : l) {
-            if (x.isDead) {
-                l.remove(x);
-            }
-        }
+        l.removeIf(x -> x.isDead);
         pq.clear();
         return fish.dist;
     }
+
     public static void main(String[] args) throws NumberFormatException, IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
@@ -112,7 +113,7 @@ public class p16236 {
         visit = new boolean[n][m];
 
         for (int i = 0; i < n; ++i) {
-            String [] str = br.readLine().split(" ");
+            String[] str = br.readLine().split(" ");
             for (int j = 0; j < m; ++j) {
                 arr[i][j] = Integer.parseInt(str[j]);
                 if (arr[i][j] != 0) {
@@ -127,7 +128,7 @@ public class p16236 {
         }
 
         int time = 0;
-        while(true) {
+        while (true) {
             boolean isEatable = inspect();
             if (isEatable) {
                 time += eat();

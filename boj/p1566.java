@@ -1,19 +1,9 @@
-/**
- * @title P배열 S1
- * @see https://www.acmicpc.net/problem/1566
- * @since 2020.01.29
- * @category simulation, brute-force, math
- * @complexity O(2^n * n) -> 820ms (n = 18)
- * @description
- *      행의 상태가 결정되면 열에 대해서는 완전탐색을 할 필요가 없음.
- *      각각의 Aij는 +i+j, +i-j, -i+j, -i-j 중 한가지이므로 하나를 먼저 결정해주면 다른 하나는 자연스럽게 결정됨
- *      이후 2^n * n에 대한 시뮬레이션
- */
+package src;
 
 import java.util.BitSet;
 import java.util.Scanner;
 
-public class Main {
+public class p1566 {
     static int n;
     static int m;
     static int count = Integer.MAX_VALUE;
