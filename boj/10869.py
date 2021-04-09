@@ -1,0 +1,6 @@
+A, B = map(int, input().split())
+print("%d" % (A+B))
+print("%d" % (A-B))
+print("%d" % (A*B))
+print("%d" % (A/B))
+print("%d" % (A%B))
